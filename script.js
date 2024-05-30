@@ -7,7 +7,7 @@ selectElement.addEventListener("change", function() {
     console.log(`Selected water amount: ${waterAmount}`);
 });
 
-//Get amount drunk
+//Get amountDrunk
 const textArea = document.getElementById("waterdrunk");
 let waterDrunk = textArea.value;
 
@@ -16,25 +16,10 @@ textArea.addEventListener("change", function() {
 });
 
 
-
-function getWaterPlan(waterAmount, waterDrunk) {
-   let waterLeft;
-   
-    if (waterAmount === 3.7){
-        let waterLeft = parseFloat(waterAmount) - parseFloat(waterDrunk);
-        console.log(`You still have to drink ${waterLeft} liters`);
-    } else {
-        let waterLeft = 2.7 - parseFloat(waterDrunk);
-        console.log(`You still have to drink ${waterLeft} liters`);
-    }
-
-    return waterLeft;
-}
-
 //Function to know how much yet to drink
 const submitButton = document.getElementById("submit");
 
 submitButton.addEventListener('click', () => {
-    getWaterPlan();
+    let waterLeft = parseFloat(waterAmount) - parseFloat(waterDrunk);
     console.log(`You still have to drink ${waterLeft} liters`); 
 });
