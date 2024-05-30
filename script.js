@@ -15,7 +15,6 @@ textArea.addEventListener("change", function() {
     waterDrunk = textArea.value;
 });
 
-
 //Function to know how much yet to drink
 const submitButton = document.getElementById("submit");
 
