@@ -23,3 +23,8 @@ submitButton.addEventListener('click', () => {
     let waterLeft = parseFloat(waterAmount) - parseFloat(waterDrunk);
     console.log(`You still have to drink ${waterLeft} liters`); 
 });
+
+//Clear textArea when user clicks
+textArea.addEventListener("click", function() {
+    textArea.value = "";
+});
