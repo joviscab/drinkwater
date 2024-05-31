@@ -26,6 +26,14 @@ submitButton.addEventListener('click', () => {
     cardContent.textContent = `You still have to drink ${waterLeft} liters.`; 
 });
 
+//Function to schedule the amount to drink
+window.setInterval(timeToDrink, 5000);
+    
+function timeToDrink() {
+    notification.show();
+}
+
+
 //Clear textArea when user clicks
 textArea.addEventListener("click", function() {
     textArea.value = "";
@@ -33,3 +41,33 @@ textArea.addEventListener("click", function() {
 
 //Clear card area
 let cardContent = document.getElementById("cardcontent");
+
+//Notifications permission request
+Notification.requestPermission().then((result) => {
+   console.log(result);
+ });
+  
+
+  
+//Popup to allow notifications
+//window.confirm("In order for this app to function properly, we need you to accept notifications in your browser.");
+
+
+//Function to show notifications
+const notification = new Notification('Time to drink', {
+    body: 'It is time to drink one glass of water!',
+    icon: 'cup.png'
+  });
+
+
+//Function to play a sound in the notification
+
+//const sound = new Audio("sound.mp3");
+//const notification = new Notification("New message", {
+//  body: "You have got a new message",
+//  icon: "logo.png",
+//});
+//notification.addEventListener("show", () => {
+//  sound.play();
+//  console.log("Notification displayed");
+//});
