@@ -23,10 +23,13 @@ submitButton.addEventListener('click', () => {
     let waterDrunkFloat = parseFloat(waterDrunk);
     let waterLeft = waterAmountFloat - waterDrunkFloat;
     waterLeft = waterLeft.toFixed(1);
-    console.log(`You still have to drink ${waterLeft} liters`); 
+    cardContent.textContent = `You still have to drink ${waterLeft} liters.`; 
 });
 
 //Clear textArea when user clicks
 textArea.addEventListener("click", function() {
     textArea.value = "";
 });
+
+//Clear card area
+let cardContent = document.getElementById("cardcontent");

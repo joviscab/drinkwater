@@ -16,6 +16,7 @@
     color: #6d89a1;
     font-size: 4rem;
     justify-content: center;
+    margin-top: 1%;
 }
 
 #subtitle {
@@ -24,6 +25,7 @@
     color: #6d89a1;
     font-size: 2rem;
     text-align: center;
+    margin-top: -2.5%;
 }
 
 
@@ -38,7 +40,11 @@
     color: #033764;
     font-size: 1.5rem;
     overflow: scroll;
+    margin-top: -2%;
+}
 
+#waterdrunk {
+    border-radius: 0.8ch;
 }
 
 #submit {
