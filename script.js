@@ -19,7 +19,10 @@ textArea.addEventListener("change", function() {
 const submitButton = document.getElementById("submit");
 
 submitButton.addEventListener('click', () => {
-    let waterLeft = parseFloat(waterAmount) - parseFloat(waterDrunk);
+    let waterAmountFloat = parseFloat(waterAmount);
+    let waterDrunkFloat = parseFloat(waterDrunk);
+    let waterLeft = waterAmountFloat - waterDrunkFloat;
+    waterLeft = waterLeft.toFixed(1);
     console.log(`You still have to drink ${waterLeft} liters`); 
 });
 
