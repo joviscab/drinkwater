@@ -1,1 +1,61 @@
 @import '/modern-normalize.css';
+
+#bgVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+#title {
+    display: flex;
+    font-family: Josefin Slab;
+    color: #6d89a1;
+    font-size: 4rem;
+    justify-content: center;
+}
+
+#subtitle {
+    display: flex;
+    font-family: Josefin Slab;
+    color: #6d89a1;
+    font-size: 2rem;
+    text-align: center;
+}
+
+
+#card {
+    text-align: center;
+    background-color:#caf0f85a;
+    border-radius: 2ch;
+    margin: 20px auto;
+    max-width: 50rem;
+    max-height: auto;
+    font-family: Josefin Slab;
+    color: #033764;
+    font-size: 1.5rem;
+    overflow: scroll;
+
+}
+
+#submit {
+    margin-top: 2.5%;
+}
+
+footer { 
+    font-family: Josefin Slab;
+    font-weight: 600;
+    color: #033764;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+footer a i {
+    font-size: 20px; 
+    margin-right: 1px; 
+    font-family: Josefin Slab;
+    color: #033764;
+}

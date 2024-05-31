@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drink Water!</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap">
-<header>
-<div><h1>AquaMemor</h1></div>
-<div><h4>Did you know that the recommended adequate intakes of total water from all sources each day for most adults between 19 and 30 years of age are: 3.7 liters for men and 2.7 liters for women?</h4></p></div>
-<div></div>
+    <link rel="stylesheet" href="styles.css"><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <header>
+<div><h1 id="title">AquaMemor</h1></div>
+<div><h4 id="subtitle">Did you know that the recommended adequate intakes of total water from all sources each day for most adults between 19 and 30 years of age are: 3.7 liters for men and 2.7 liters for women?</h4></p></div>
 </header>
 </head>
+<div id="card">
 <body>
     <div>
         <h3>How much water do you plan on drinking today?</h3>
@@ -27,10 +30,18 @@
 Enter the amount of water in liters in a format like 0.1, 0.25, or 1.
         </textarea>
         <br>
+     
         <input type="submit" id="submit" value="Submit">
+        <br>
+        <br>
     </div>
-    <div></div>
-<footer></footer>
+    <div>
+        <video autoplay muted loop id="bgVideo">
+            <source src="water.mp4" type="video/mp4">
+          </video>
+    </div>
+</div>
 <script src="script.js"></script>
 </body>
+<footer><p>&copy; 2024 John Schmutzler | Follow me on <a href="https://github.com/joviscab" target="_blank"><i class='fab fa-github' style='font-size:20px'></i>Github</a></p></footer>
 </html>
