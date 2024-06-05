@@ -24,15 +24,8 @@ submitButton.addEventListener('click', () => {
     let waterLeft = waterAmountFloat - waterDrunkFloat;
     waterLeft = waterLeft.toFixed(1);
     cardContent.textContent = `You still have to drink ${waterLeft} liters.`; 
+    timeToDrink();
 });
-
-//Function to schedule the amount to drink
-window.setInterval(timeToDrink, 5000);
-    
-function timeToDrink() {
-    notification.show();
-}
-
 
 //Clear textArea when user clicks
 textArea.addEventListener("click", function() {
@@ -43,21 +36,54 @@ textArea.addEventListener("click", function() {
 let cardContent = document.getElementById("cardcontent");
 
 //Notifications permission request
-Notification.requestPermission().then((result) => {
-   console.log(result);
- });
+
   
 
   
 //Popup to allow notifications
 //window.confirm("In order for this app to function properly, we need you to accept notifications in your browser.");
 
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('popup-modal');
+    modal.style.display = 'block';
+
+    const yesButton = document.getElementById('confirm-yes');
+    const noButton = document.getElementById('confirm-no');
+
+    yesButton.onclick = function() {
+        modal.style.display = 'none';
+        Notification.requestPermission().then((result) => {
+            console.log(result);
+          });
+        console.log('User accepted notifications.');
+    };
+
+    noButton.onclick = function() {
+        modal.style.display = 'none';
+        console.log('User declined notifications.');
+        window.location.href = 'https://google.com';
+    };
+});
+
+
+
+
+
 
 //Function to show notifications
-const notification = new Notification('Time to drink', {
-    body: 'It is time to drink one glass of water!',
-    icon: 'cup.png'
+function showNotification () {
+    new Notification('Time to drink', {
+        body: 'It is time to drink one glass of water!',
+        icon: 'cup.png'
   });
+}
+
+//Function to schedule the amount to drink
+    
+function timeToDrink() {
+    window.setInterval(showNotification, 5000);
+}
+
 
 
 //Function to play a sound in the notification
