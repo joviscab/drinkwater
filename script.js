@@ -23,7 +23,7 @@ submitButton.addEventListener('click', () => {
     let waterDrunkFloat = parseFloat(waterDrunk);
     let waterLeft = waterAmountFloat - waterDrunkFloat;
     waterLeft = waterLeft.toFixed(1);
-    cardContent.textContent = `You still have to drink ${waterLeft} liters.`; 
+    cardContent.textContent = ''; 
     timeToDrink(waterLeft);
 });
 
@@ -81,7 +81,7 @@ let intervalId;
 function timeToDrink(waterLeft) {
     let cupsAmount = waterLeft / 0.2;
     let totalNotifications = Math.ceil(cupsAmount);
-    let notificationsInterval = 30 * 60 * 1000; // 30 minutes
+    let notificationsInterval = 10000; // 30 minutes = 30 * 60 * 1000
 
     //Reset notificationsCount and clear previous intervals
     notificationsCount = 0;
@@ -104,5 +104,8 @@ function timeToDrink(waterLeft) {
 
 //Function to update the remaining notifications display
 function updateRemainingNotifications (remaining) {
-    cardContent.textContent = `You still have to drink ${remaining} more cups of water today. I will notify you every 30 minutes for you to drink a cup until you complete the recommended amount of water for today. Please let this page opened in one tab meanwhile you use your computer.`;
+    const notificationDiv = document.createElement('div');
+    notificationDiv.textContent = `You still have to drink about ${remaining} more cups of water today. I will notify you every 30 minutes for you to drink a cup until you complete the recommended amount of water for today. Please let this page open in one tab meanwhile you use your computer.`;
+    notificationDiv.classList.add('notification-div');
+    cardContent.appendChild(notificationDiv);
 }
