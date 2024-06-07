@@ -64,6 +64,10 @@ function showNotification (remaining, isLast) {
         ? 'This is your last glass of water. Great job staying hydrated!'
         : `It is time to drink one glass of water! You still have to drink ${adjustedRemaining} more time(s).`;
     
+    //Notification Sound
+    const sound = new Audio("wateralarm.mp3");
+    sound.play();
+
     new Notification('Time to drink', {
         body: message,
         icon: 'cup.png'
@@ -102,17 +106,3 @@ function timeToDrink(waterLeft) {
 function updateRemainingNotifications (remaining) {
     cardContent.textContent = `You still have to drink ${remaining} more cups of water today. I will notify you every 30 minutes for you to drink a cup until you complete the recommended amount of water for today. Please let this page opened in one tab meanwhile you use your computer.`;
 }
-
-
-
-//Function to play a sound in the notification
-
-//const sound = new Audio("sound.mp3");
-//const notification = new Notification("New message", {
-//  body: "You have got a new message",
-//  icon: "logo.png",
-//});
-//notification.addEventListener("show", () => {
-//  sound.play();
-//  console.log("Notification displayed");
-//});
