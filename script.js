@@ -24,7 +24,7 @@ submitButton.addEventListener('click', () => {
     let waterLeft = waterAmountFloat - waterDrunkFloat;
     waterLeft = waterLeft.toFixed(1);
     cardContent.textContent = `You still have to drink ${waterLeft} liters.`; 
-    timeToDrink();
+    timeToDrink(waterLeft);
 });
 
 //Clear textArea when user clicks
@@ -35,14 +35,7 @@ textArea.addEventListener("click", function() {
 //Clear card area
 let cardContent = document.getElementById("cardcontent");
 
-//Notifications permission request
-
-  
-
-  
-//Popup to allow notifications
-//window.confirm("In order for this app to function properly, we need you to accept notifications in your browser.");
-
+//Popup request allow notifications
 document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('popup-modal');
     modal.style.display = 'block';
@@ -55,33 +48,59 @@ document.addEventListener('DOMContentLoaded', function() {
         Notification.requestPermission().then((result) => {
             console.log(result);
           });
-        console.log('User accepted notifications.');
     };
 
     noButton.onclick = function() {
         modal.style.display = 'none';
-        console.log('User declined notifications.');
         window.location.href = 'https://google.com';
     };
 });
 
-
-
-
-
-
 //Function to show notifications
-function showNotification () {
+function showNotification (remaining, isLast) {
+    let adjustedRemaining = remaining -1;
+    updateRemainingNotifications(remaining);
+    let message = isLast
+        ? 'This is your last glass of water. Great job staying hydrated!'
+        : `It is time to drink one glass of water! You still have to drink ${adjustedRemaining} more time(s).`;
+    
     new Notification('Time to drink', {
-        body: 'It is time to drink one glass of water!',
+        body: message,
         icon: 'cup.png'
   });
 }
 
 //Function to schedule the amount to drink
+let notificationsCount = 0;
+let intervalId;
+
+function timeToDrink(waterLeft) {
+    let cupsAmount = waterLeft / 0.2;
+    let totalNotifications = Math.ceil(cupsAmount);
+    let notificationsInterval = 30 * 60 * 1000; // 30 minutes
+
+    //Reset notificationsCount and clear previous intervals
+    notificationsCount = 0;
+    clearInterval(intervalId);
+
+    //Update initial remaining notifications display
+    updateRemainingNotifications(totalNotifications - notificationsCount);
     
-function timeToDrink() {
-    window.setInterval(showNotification, 5000);
+    intervalId = window.setInterval(function() {
+        let remaining = totalNotifications - notificationsCount;
+        if (remaining > 0) {
+            let isLast = remaining ===1;
+            showNotification(remaining, isLast);
+            notificationsCount++;
+        } else {
+            clearInterval(intervalId);
+        }
+    }, notificationsInterval);
+}
+
+//Function to update the remaining notifications display
+function updateRemainingNotifications (remaining) {
+    cardContent.textContent = `You still have to drink ${remaining} more cups of water today. I will notify you every 30 minutes for you to drink a cup until you complete the recommended amount of water for today. Please let this page opened in one tab meanwhile you use your computer.`;
 }
 
 
