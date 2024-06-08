@@ -137,3 +137,23 @@ function updateRemainingNotifications(remaining, isLast, goalMet = false) {
     notificationDiv.classList.add('notification-div');
     cardContent.appendChild(notificationDiv);
 }
+
+
+//Function to give a typing animation effect
+const text = "Did you know that the recommended adequate intakes of total water from all sources each day for most adults between 19 and 30 years of age are: 3.7 liters for men and 2.7 liters for women?";
+const typingTextElement = document.getElementById('typing-text');
+
+function typeWriter(text, element, speed = 50) {
+  let i = 0;
+  const typeInterval = setInterval(() => {
+    if (i < text.length) {
+      element.innerHTML += text.charAt(i);
+      i++;
+    } else {
+      clearInterval(typeInterval);
+    }
+  }, speed);
+}
+
+// Call the function to start typing animation
+typeWriter(text, typingTextElement);
