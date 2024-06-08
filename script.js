@@ -63,9 +63,9 @@ document.addEventListener('DOMContentLoaded', function() {
         cardContent.innerHTML = '';
 
         const notificationDiv = document.createElement('div');
-        notificationDiv.textContent = `I am sorry, without the notifications I am not useful at all. But thank you for your visit!`;
+        notificationDiv.textContent = `I am sorry 🫠, without the notifications I am not useful at all. But thank you for your visit! 😊`;
         notificationDiv.classList.add('notification-div');
-        
+
         cardContent.appendChild(notificationDiv);
     };
 });
@@ -75,8 +75,8 @@ function showNotification (remaining, isLast) {
     let adjustedRemaining = remaining -1;
     updateRemainingNotifications(remaining);
     let message = isLast
-        ? 'This is your last glass of water. Great job staying hydrated!'
-        : `It is time to drink one glass of water! You still have to drink ${adjustedRemaining} more time(s).`;
+        ? 'This is your last glass of water. Great job staying hydrated! 💪'
+        : `It is time to drink one glass of water! You still have to drink ${adjustedRemaining} more time(s). 🤜`;
     
     //Notification Sound
     const sound = new Audio("wateralarm.mp3");
@@ -128,11 +128,11 @@ function updateRemainingNotifications(remaining, isLast, goalMet = false) {
 
     const notificationDiv = document.createElement('div');
     if (goalMet) {
-        notificationDiv.textContent = 'Congratulations! You have met your water intake goal for today! See you tomorrow!';
+        notificationDiv.textContent = 'Congratulations! You have met your water intake goal for today! See you tomorrow! 🫶';
     } else if (remaining <= 0 && isLast) {
-        notificationDiv.textContent = 'This was your last glass of water. Great job staying hydrated. You can now close this windows. Hope to see you tomorrow!'
+        notificationDiv.textContent = 'This was your last glass of water. Great job staying hydrated. You can now close this windows. Hope to see you tomorrow! 🫶'
     } else {
-        notificationDiv.textContent = `You still have to drink about ${remaining} more cups of water today. I will notify you every 30 minutes for you to drink a cup until you complete the recommended amount of water for today. Please let this page open in one tab meanwhile you use your computer.`;
+        notificationDiv.textContent = `You still have to drink about ${remaining} more cups of water today. I will notify you every 30 minutes for you to drink a cup until you complete the recommended amount of water for today. Please let this page open in one tab meanwhile you use your computer. 🤝`;
     }
     notificationDiv.classList.add('notification-div');
     cardContent.appendChild(notificationDiv);
