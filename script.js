@@ -88,14 +88,15 @@ function timeToDrink(waterLeft) {
     clearInterval(intervalId);
 
     //Update initial remaining notifications display
-    updateRemainingNotifications(totalNotifications - notificationsCount);
+    updateRemainingNotifications(totalNotifications);
     
     intervalId = window.setInterval(function() {
         let remaining = totalNotifications - notificationsCount;
         if (remaining > 0) {
-            let isLast = remaining ===1;
-            showNotification(remaining, isLast);
             notificationsCount++;
+            let isLast = remaining === 1;
+            showNotification(remaining, isLast);
+            updateRemainingNotifications(remaining - 1, isLast);
         } else {
             clearInterval(intervalId);
         }
@@ -103,7 +104,7 @@ function timeToDrink(waterLeft) {
 }
 
 //Function to update the remaining notifications display
-function updateRemainingNotifications(remaining) {
+function updateRemainingNotifications(remaining, isLast) {
     const cardContent = document.getElementById('cardcontent');
     
     const previousNotification = cardContent.querySelector('.notification-div');
@@ -112,7 +113,9 @@ function updateRemainingNotifications(remaining) {
     }
 
     const notificationDiv = document.createElement('div');
-    notificationDiv.textContent = `You still have to drink about ${remaining} more cups of water today. I will notify you every 30 minutes for you to drink a cup until you complete the recommended amount of water for today. Please let this page open in one tab meanwhile you use your computer.`;
+    notificationDiv.textContent = isLast
+        ? 'This is your last glass of water. Great job staying hydrated. You can now close this windows. Hope to see you tomorrow!'
+        : `You still have to drink about ${remaining} more cups of water today. I will notify you every 30 minutes for you to drink a cup until you complete the recommended amount of water for today. Please let this page open in one tab meanwhile you use your computer.`;
     notificationDiv.classList.add('notification-div');
     cardContent.appendChild(notificationDiv);
 }
