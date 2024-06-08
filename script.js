@@ -58,7 +58,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     noButton.onclick = function() {
         modal.style.display = 'none';
-        window.location.href = 'https://google.com';
+        const cardContent = document.getElementById('cardcontent');
+
+        cardContent.innerHTML = '';
+
+        const notificationDiv = document.createElement('div');
+        notificationDiv.textContent = `I am sorry, without the notifications I am not useful at all. But thank you for your visit!`;
+        notificationDiv.classList.add('notification-div');
+        
+        cardContent.appendChild(notificationDiv);
     };
 });
 
