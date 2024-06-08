@@ -18,24 +18,13 @@ body {
     display: flex;
     font-family: Josefin Slab;
     color: #033764;
-    border-right: .15em solid rgb(196, 234, 230);
     background-color: #caf0f8db;
     border-radius: 10px;;
     font-size: 2rem;
     text-align: center;
     margin-top: -2.5%;
-    animation: typing 1s steps(40, end), blink-caret .75s step-end infinite;
 }
 
-
-@keyframes typing {
-    from { width: 0 }
-}
-
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: rgba(12, 209, 235, 0.49); }
-}
 
 #card {
     text-align: center;
