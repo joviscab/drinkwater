@@ -95,7 +95,7 @@ let intervalId;
 function timeToDrink(waterLeft) {
     let cupsAmount = waterLeft / 0.2;
     let totalNotifications = Math.ceil(cupsAmount);
-    let notificationsInterval = 10000; // 30 minutes = 30 * 60 * 1000
+    let notificationsInterval = 30 * 60 * 1000; // 30 minutes = 30 * 60 * 1000
 
     //Reset notificationsCount and clear previous intervals
     notificationsCount = 0;
