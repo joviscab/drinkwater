@@ -23,8 +23,14 @@ submitButton.addEventListener('click', () => {
     let waterDrunkFloat = parseFloat(waterDrunk);
     let waterLeft = waterAmountFloat - waterDrunkFloat;
     waterLeft = waterLeft.toFixed(1);
+
     cardContent.textContent = ''; 
-    timeToDrink(waterLeft);
+
+    if (waterLeft <= 0) {
+        updateRemainingNotifications(0, true, true);
+    } else {
+        timeToDrink(waterLeft);
+    }
 });
 
 //Clear textArea when user clicks
@@ -104,7 +110,7 @@ function timeToDrink(waterLeft) {
 }
 
 //Function to update the remaining notifications display
-function updateRemainingNotifications(remaining, isLast) {
+function updateRemainingNotifications(remaining, isLast, goalMet = false) {
     const cardContent = document.getElementById('cardcontent');
     
     const previousNotification = cardContent.querySelector('.notification-div');
@@ -113,9 +119,13 @@ function updateRemainingNotifications(remaining, isLast) {
     }
 
     const notificationDiv = document.createElement('div');
-    notificationDiv.textContent = isLast
-        ? 'This is your last glass of water. Great job staying hydrated. You can now close this windows. Hope to see you tomorrow!'
-        : `You still have to drink about ${remaining} more cups of water today. I will notify you every 30 minutes for you to drink a cup until you complete the recommended amount of water for today. Please let this page open in one tab meanwhile you use your computer.`;
+    if (goalMet) {
+        notificationDiv.textContent = 'Congratulations! You have met your water intake goal for today! See you tomorrow!';
+    } else if (remaining <= 0 && isLast) {
+        notificationDiv.textContent = 'This was your last glass of water. Great job staying hydrated. You can now close this windows. Hope to see you tomorrow!'
+    } else {
+        notificationDiv.textContent = `You still have to drink about ${remaining} more cups of water today. I will notify you every 30 minutes for you to drink a cup until you complete the recommended amount of water for today. Please let this page open in one tab meanwhile you use your computer.`;
+    }
     notificationDiv.classList.add('notification-div');
     cardContent.appendChild(notificationDiv);
 }
