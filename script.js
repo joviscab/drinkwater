@@ -103,7 +103,14 @@ function timeToDrink(waterLeft) {
 }
 
 //Function to update the remaining notifications display
-function updateRemainingNotifications (remaining) {
+function updateRemainingNotifications(remaining) {
+    const cardContent = document.getElementById('cardcontent');
+    
+    const previousNotification = cardContent.querySelector('.notification-div');
+    if (previousNotification) {
+        previousNotification.remove();
+    }
+
     const notificationDiv = document.createElement('div');
     notificationDiv.textContent = `You still have to drink about ${remaining} more cups of water today. I will notify you every 30 minutes for you to drink a cup until you complete the recommended amount of water for today. Please let this page open in one tab meanwhile you use your computer.`;
     notificationDiv.classList.add('notification-div');
